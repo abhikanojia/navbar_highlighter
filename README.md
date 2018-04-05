@@ -1,38 +1,55 @@
-# NavbarHighlighter
+# Navbar-Highlighter
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/navbar_highlighter`. To experiment with that code, run `bin/console` for an interactive prompt.
+Navbar highlighter provides an easier way to activate link based on controller and action used by rails.
 
-TODO: Delete this and the text above, and describe your gem
+**Usecase:**  You want to activate certain links when user is hits `static` controller's `index` action. you just need to add `data-controller='controller_name'` and `data-action='action_name'` in order to add specified class to it when user hits this controller's action.
 
-## Installation
+## Usage
 
-Add this line to your application's Gemfile:
-
+Add `navbar_highlighter` to Gemfile and `bundle install`
 ```ruby
 gem 'navbar_highlighter'
 ```
 
-And then execute:
+Add the following to your `app/assets/javascripts/application.js`:
 
-    $ bundle
+    //= require navbar_highlighter
 
-Or install it yourself as:
+Now, Initialize navbar highlighter using following code, this can be done in a separate js file. for example: `navbar_highlighter_init.js`
 
-    $ gem install navbar_highlighter
+If you are doing so, don't forget to add it to `asset.rb` like so:
+    `Rails.application.config.assets.precompile += %w( navbar_highlighter_init.js )`
 
-## Usage
 
-TODO: Write usage instructions here
+    (function(){
+      var data = {
+        // navbar you want to use.
+        navBar: $('[data-navbar=highlight]'),
 
-## Development
+        // navbar links class selector
+        linkSelectorClass: 'primary-link',
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+        // name of the class you want to add to activate a link
+        classNameToAdd: 'active-link'
+      },
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+      linkHighlighter = new NavbarHighlighter(data);
+      linkHighlighter.init();
 
+    })();
+
+#### Add `data-controller='controller-name'` and `data-action='action-name'` to the links you want to add class based on controller and action.
+
+#### Add `data-navbar='highlight'` to navbar just like below snippet:
+
+<script src="https://gist.github.com/abhikanojia/02583e5a383ef77fe5b5125a95421d6c.js"></script>
+
+**Note:**
+
+As user hits `sessions_controller` `index` action `Home` link will be active, and when user clicks `Users` link `Users` link will be get `active-link` class.
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/navbar_highlighter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/abhikanojia/navbar_highlighter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -40,4 +57,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the NavbarHighlighter project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/navbar_highlighter/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the NavbarHighlighter project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/abhikanojia/navbar_highlighter/blob/master/CODE_OF_CONDUCT.md).

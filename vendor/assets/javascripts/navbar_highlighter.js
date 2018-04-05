@@ -1,11 +1,9 @@
 function NavbarHighlighter(data) {
-  this.links = data.links;
+  this.linkSelectorClass = data.linkSelectorClass;
   this.navBar = data.navBar;
   this.classNameToAdd = data.classNameToAdd;
-  this.actionName = data.actionName;
-  this.controllerName = data.controllerName;
-  this.actionDataAttribute = data.controllerDataAttribute;
-  this.controllerDataAttribute = data.controllerDataAttribute;
+  this.actionName = $('meta[name=action]').attr('content');
+  this.controllerName = $('meta[name=controller]').attr('content');
 }
 
 NavbarHighlighter.prototype.getControllerSelector = function() {
@@ -16,7 +14,19 @@ NavbarHighlighter.prototype.getActionSelector = function() {
   return '[data-action=' + this.actionName + ']';
 };
 
-NavbarHighlighter.prototype.init = function() {
-  this.links.removeClass(this.classNameToAdd);
-  $(this.getControllerSelector() + this.getActionSelector()).addClass(this.classNameToAdd);
+NavbarHighlighter.prototype.classSelector = function(className) {
+  return '.' + className;
 };
+
+NavbarHighlighter.prototype.init = function() {
+
+  this.navBar.find(
+    this.classSelector(this.linkSelectorClass)
+  ).removeClass(this.classNameToAdd);
+
+  this.navBar.find(
+    $(this.getControllerSelector() + this.getActionSelector())
+  ).addClass(this.classNameToAdd);
+
+};
+
