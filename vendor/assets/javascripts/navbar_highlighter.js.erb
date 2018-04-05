@@ -1,0 +1,35 @@
+function NavbarHighlighter(data) {
+  this.navBar = data.navBar;
+  this.controllerDataAttribute = data.controllerDataAttribute;
+  this.actionDataAttribute = data.controllerDataAttribute;
+  this.controllerName = data.controller;
+  this.actionName = data.action;
+  this.className = data.className;
+}
+
+NavbarHighlighter.prototype.getControllerSelector = function() {
+  return '[data-controller=' + this.controller + ']';
+};
+
+NavbarHighlighter.prototype.getActionSelector = function() {
+  return '[data-action=' + this.action + ']';
+};
+
+NavbarHighlighter.prototype.highlight = function() {
+  $(this.getControllerSelector()).siblings().removeClass(this.className);
+  $(this.getControllerSelector() + this.getActionSelector()).addClass(this.className);
+};
+
+$(document).ready(function(){
+  var data = {
+    navBar: $('[data-navbar=highlight]'),
+    controllerDataAttribute: 'controller',
+    actionDataAttribute: 'action',
+    className: 'active-link',
+    controllerName: "#{controller}",
+    actionName: "#{action}",
+  },
+
+  linkHighlighter = new NavbarHighlighter(data);
+  linkHighlighter.highlight();
+});
