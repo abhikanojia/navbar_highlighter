@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Abhishek Kanojia"]
   spec.email         = ["abhishek.kanojia@vinsol.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{This gem provides an easy way to change navbar links based on controller and action in ruby on rails.}
+  spec.description   = %q{This gem provides an easy way to change navbar links based on controller and action in ruby on rails. Usecase: Can be used to activate certain link based on controller. }
+  spec.homepage      = "https://github.com/abhikanojia/navbar_highlighter"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
