@@ -6,8 +6,12 @@ function NavbarHighlighter(data) {
   this.controllerName = $('meta[name=controller]').attr('content');
 }
 
-NavbarHighlighter.prototype.getControllerSelector = function() {
-  return '[data-controller=' + this.controllerName + ']';
+NavbarHighlighter.prototype.getControllerSelector = function(selector) {
+  if(selector) {
+    return '[data-controller=' + selector + ']';
+  } else {
+    return '[data-controller=' + this.controllerName + ']';
+  }
 };
 
 NavbarHighlighter.prototype.getActionSelector = function() {
@@ -18,15 +22,26 @@ NavbarHighlighter.prototype.classSelector = function(className) {
   return '.' + className;
 };
 
+NavbarHighlighter.prototype.highlightParentIfExist = function(element) {
+  var dataParent = element.data('parent');
+  if(dataParent) {
+    $(this.getControllerSelector(dataParent)).addClass(this.classNameToAdd);
+  }
+};
+
 NavbarHighlighter.prototype.init = function() {
 
   this.navBar.find(
     this.classSelector(this.linkSelectorClass)
   ).removeClass(this.classNameToAdd);
 
-  this.navBar.find(
+  var element = this.navBar.find(
     $(this.getControllerSelector() + this.getActionSelector())
-  ).addClass(this.classNameToAdd);
+  );
+
+  element.addClass(this.classNameToAdd);
+
+  this.highlightParentIfExist(element);
 
 };
 

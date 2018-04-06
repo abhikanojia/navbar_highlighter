@@ -1,4 +1,4 @@
-# Navbar-Highlighter
+ # Navbar-Highlighter
 
 Navbar highlighter provides an easier way to activate link based on controller and action used by rails.
 
@@ -56,7 +56,8 @@ Add`<%= navbar_highlighter_tags %>` to any layout that you are using.
         </li>
 
         <li class="primary-menu">
-          <a href="/users" class="primary-link" data-controller="users" data-action="index">
+          <a href="/users" class="primary-link" data-controller="users" data-action="index" data-parent='sessions'>
+          <!-- Adding data-parent='controller_name' will add active-link class to parent link i.e Home link in this case. -->
           Users
           </a>
         </li>
@@ -67,6 +68,9 @@ Add`<%= navbar_highlighter_tags %>` to any layout that you are using.
 **Note:**
 
 As user hits `sessions_controller` `index` action `Home` link will be active, and when user clicks `Users` link `Users` link will be get `active-link` class.
+# New feature
+Adding a `data-parent='controller_name'` to link will add class to parent link as well as the child link.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/abhikanojia/navbar_highlighter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
