@@ -1,4 +1,4 @@
-# Navbar-Highlighter
+ # Navbar-Highlighter
 
 Navbar highlighter provides an easier way to activate link based on controller and action used by rails.
 
@@ -37,12 +37,32 @@ If you are doing so, don't forget to add it to `asset.rb` like so:
       linkHighlighter.init();
 
     })();
+Add`<%= navbar_highlighter_tags %>` to any layout that you are using.
 
-#### Add `data-controller='controller-name'` and `data-action='action-name'` to the links you want to add class based on controller and action.
+---
+##### Add `data-controller='controller-name'` and `data-action='action-name'` to the links you want to add class based on controller and action.
+
+---
 
 #### Add `data-navbar='highlight'` to navbar just like below snippet:
 
-<script src="https://gist.github.com/abhikanojia/02583e5a383ef77fe5b5125a95421d6c.js"></script>
+
+    <nav data-navbar="highlight">
+      <ul class="primary-nav-list">
+        <li class="primary-menu">
+          <a href="/" class="primary-link" data-controller="sessions" data-action="index">
+            Home
+          </a>
+        </li>
+
+        <li class="primary-menu">
+          <a href="/users" class="primary-link" data-controller="users"                     data-action="index">
+          Users
+          </a>
+        </li>
+        <ul>
+    </nav>
+
 
 **Note:**
 
@@ -58,3 +78,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the NavbarHighlighter project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/abhikanojia/navbar_highlighter/blob/master/CODE_OF_CONDUCT.md).
+
