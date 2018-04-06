@@ -1,4 +1,4 @@
- # Navbar-Highlighter
+# Navbar-Highlighter
 
 Navbar highlighter provides an easier way to activate link based on controller and action used by rails.
 
@@ -56,7 +56,7 @@ Add`<%= navbar_highlighter_tags %>` to any layout that you are using.
         </li>
 
         <li class="primary-menu">
-          <a href="/users" class="primary-link" data-controller="users"                     data-action="index">
+          <a href="/users" class="primary-link" data-controller="users" data-action="index">
           Users
           </a>
         </li>
