@@ -4,6 +4,7 @@ function NavbarHighlighter(data) {
   this.classNameToAdd = data.classNameToAdd;
   this.actionName = $('meta[name=action]').attr('content');
   this.controllerName = $('meta[name=controller]').attr('content');
+  this.currentUrl = $('meta[name=current_url]').attr('content');
 }
 
 NavbarHighlighter.prototype.getControllerSelector = function(selector) {
@@ -18,6 +19,10 @@ NavbarHighlighter.prototype.getActionSelector = function() {
   return '[data-action=' + this.actionName + ']';
 };
 
+NavbarHighlighter.prototype.getUrlSelector = function() {
+  return "[data-url='" + this.currentUrl + "']";
+};
+
 NavbarHighlighter.prototype.classSelector = function(className) {
   return '.' + className;
 };
@@ -27,6 +32,10 @@ NavbarHighlighter.prototype.highlightParentIfExist = function(element) {
   if(dataParent) {
     $(this.getControllerSelector(dataParent)).addClass(this.classNameToAdd);
   }
+};
+
+NavbarHighlighter.prototype.highlightUrlSpecificLinks = function() {
+  $(this.getUrlSelector()).addClass(this.classNameToAdd);
 };
 
 NavbarHighlighter.prototype.init = function() {
@@ -42,6 +51,8 @@ NavbarHighlighter.prototype.init = function() {
   element.addClass(this.classNameToAdd);
 
   this.highlightParentIfExist(element);
+
+  this.highlightUrlSpecificLinks();
 
 };
 
