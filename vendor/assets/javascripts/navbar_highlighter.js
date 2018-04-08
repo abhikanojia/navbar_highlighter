@@ -20,7 +20,7 @@ NavbarHighlighter.prototype.getActionSelector = function() {
 };
 
 NavbarHighlighter.prototype.getUrlSelector = function() {
-  return "[data-url='" + this.currentUrl + "']";
+  return "[data-highlight-on='" + this.currentUrl + "']";
 };
 
 NavbarHighlighter.prototype.classSelector = function(className) {
