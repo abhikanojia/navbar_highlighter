@@ -69,12 +69,6 @@ Add`<%= navbar_highlighter_tags %>` to any layout that you are using.
 
 As user hits `sessions_controller` `index` action `Home` link will be active, and when user clicks `Users` link `Users` link will be get `active-link` class.
 
-# New feature
-
-Adding a `data-parent='controller_name'` to link will add class to parent link as well as the child link.
-
-Different un-related links can be highlighted using `data-highlight-on=<%= current_url %>`. This can be useful when you want to highlight links based on current url.
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/abhikanojia/navbar_highlighter. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
